@@ -1,0 +1,14 @@
+@import "./nullstyle.css";
+
+body{
+	height: 100%;
+	background-color: #534f4f;
+
+	
+}
+#root{
+	height: 100%;
+}
+.wrapper{
+	overflow: hidden;
+}
