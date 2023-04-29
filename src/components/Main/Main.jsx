@@ -26,8 +26,9 @@ export default function Main() {
 		setElements((prev) => [...prev, newEl]);
 		setActiveElId(newEl.id);
 	}
-	function pickActiveEl(e) {
-		setActiveElId(e.target.id);
+	function pickActiveEl(id) {
+		setActiveElId(id);
+
 	}
 	function changeElement(e) {
 
@@ -42,39 +43,60 @@ export default function Main() {
 			}
 			return newArr;
 		})
-		//--------
-		// setElements(prev => prev.map(oldNote => {
-		// 	return oldNote.id === activeElId ? { ...oldNote, text: e.target.value } : oldNote;
-		// }))
-		// Not reranged notes
-		//---------
+
 	}
 	function findActiveEl() {
 		return elements.find(el => {
 			return el.id === activeElId
 		}) || elements[0]
 	}
+	function deleteElement(e, theId) {
+		e.preventDefault();
+		e.stopPropagation();
+		setElements(prev => {
+			let newArray = [];
+			if (elements.length > 0) {
+				for (let i = 0; i < elements.length; i++) {
+					if (prev[i].id === theId) {
+						continue
+					} else {
+						newArray.push(prev[i]);
+					}
+				}
+			}
+			return newArray;
+		})
 
+
+	}
 
 
 
 	return (
 		<main className="main">
 			<div className="main__container">
+
 				<Table
 					activeElId={activeElId}
 					createElement={createElement}
 					elements={elements}
 					pickActiveEl={(e) => pickActiveEl(e)}
+					deleteElement={deleteElement}
 				/>
-				<section className="info">
-					<h2 className="info__title">YES</h2>
-					{activeElId && <textarea
-						className="info__text"
-						onChange={(e) => changeElement(e)}
-						value={findActiveEl().text}
-					></textarea>}
-				</section>
+				{
+					elements.length > 0 ?
+						<section className="info">
+							<h2 className="info__title">YES</h2>
+							{activeElId && <textarea
+								className="info__text"
+								onChange={(e) => changeElement(e)}
+								value={findActiveEl().text}
+							></textarea>}
+						</section>
+						:
+						<h1 className="nothing">THERE IS NOTHING! What Have you done!?</h1>
+				}
+
 			</div>
 		</main>
 	)

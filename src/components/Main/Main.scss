@@ -35,12 +35,27 @@
 			flex-direction: column;
 		}
 		&__elements {
+			.gg-trash {
+				transition: all 0.1s ease 0s;
+				visibility: hidden;
+				opacity: 0;
+			}
+			&:hover {
+				.gg-trash {
+					opacity: 100%;
+					visibility: visible;
+					transition: all 0.5s ease 0s;
+				}
+			}
 			cursor: pointer;
 			padding: 5px;
 			color: white;
 			&.picked {
-				background-color: #030235;
+				background-color: #030235a8;
 			}
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 		}
 	}
 	.info {
@@ -51,5 +66,63 @@
 	.info__text {
 		margin: 0 auto;
 		resize: none;
+	}
+}
+//trashbox
+.gg-trash {
+	transition: all 0.5s ease 0s;
+	box-sizing: border-box;
+	position: relative;
+	display: block;
+	transform: scale(var(--ggs, 1));
+	width: 10px;
+	height: 12px;
+	border: 2px solid transparent;
+	box-shadow: 0 0 0 2px, inset -2px 0 0, inset 2px 0 0;
+	border-bottom-left-radius: 1px;
+	border-bottom-right-radius: 1px;
+	margin-top: 4px;
+}
+.gg-trash::after,
+.gg-trash::before {
+	content: "";
+	display: block;
+	box-sizing: border-box;
+	position: absolute;
+}
+.gg-trash::after {
+	background: currentColor;
+	border-radius: 3px;
+	width: 16px;
+	height: 2px;
+	top: -4px;
+	left: -5px;
+}
+.gg-trash::before {
+	width: 10px;
+	height: 4px;
+	border: 2px solid;
+	border-bottom: transparent;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	top: -7px;
+	left: -2px;
+}
+.nothing {
+	display: block;
+	font-size: 4rem;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	font-weight: bold;
+	animation: nss 3s ease 1 normal 0s none;
+}
+@keyframes nss {
+	0% {
+		visibility: hidden;
+		opacity: 0;
+	}
+	100% {
+		visibility: visible;
+		opacity: 100%;
 	}
 }
