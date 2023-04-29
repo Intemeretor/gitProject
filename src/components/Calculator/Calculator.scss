@@ -1,0 +1,21 @@
+.calculator {
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, 2rem);
+		grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+	}
+
+	&__output {
+	}
+
+	&__previous-value {
+	}
+
+	&__current-value {
+	}
+
+	&__button {
+	}
+}
+.dbl-btn {
+}
