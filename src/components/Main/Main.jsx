@@ -31,9 +31,23 @@ export default function Main() {
 	}
 	function changeElement(e) {
 
-		setElements(prev => prev.map(oldNote => {
-			return oldNote.id === activeElId ? { ...oldNote, text: e.target.value } : oldNote;
-		}))
+		setElements(prev => {
+			let newArr = [];
+			for (let i = 0; i < elements.length; i++) {
+				if (prev[i].id === activeElId) {
+					newArr.unshift({ ...prev[i], text: e.target.value })
+				} else {
+					newArr.push(prev[i]);
+				}
+			}
+			return newArr;
+		})
+		//--------
+		// setElements(prev => prev.map(oldNote => {
+		// 	return oldNote.id === activeElId ? { ...oldNote, text: e.target.value } : oldNote;
+		// }))
+		// Not reranged notes
+		//---------
 	}
 	function findActiveEl() {
 		return elements.find(el => {

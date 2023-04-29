@@ -12,8 +12,8 @@ export default function App() {
 	return (
 		<div className="wrapper">
 			<Header darkmode={darkmode} toggle={(e) => changeMode(e)} />
-			<Calculator />
-			{/* <Main /> */}
+			{/* <Calculator /> */}
+			<Main />
 		</div>
 	)
 }

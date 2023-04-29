@@ -1,21 +1,43 @@
 .calculator {
+	padding: 1.5rem;
 	&__grid {
+		justify-content: center;
 		display: grid;
-		grid-template-columns: repeat(4, 2rem);
+		grid-template-columns: repeat(4, 6rem);
 		grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 	}
 
 	&__output {
+		grid-column: 1/-1;
+		background-color: #0b0564;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: end;
+		word-wrap: break-word;
+		word-break: break-all;
 	}
 
 	&__previous-value {
+		color: #ffffffb4;
+		font-size: 1.1rem;
 	}
 
 	&__current-value {
+		font-size: 2.4rem;
+		color: #ffffff;
 	}
 
 	&__button {
+		&:hover {
+			background-color: #ffffffde;
+		}
+		&.dbl-btn {
+			grid-column: span 2;
+		}
+
+		font-size: 2rem;
+		background-color: #ffffffb0;
+		border: 1px solid #ffffff;
 	}
-}
-.dbl-btn {
 }
