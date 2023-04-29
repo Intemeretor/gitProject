@@ -11,8 +11,10 @@ export default function Main() {
 	)
 
 	useEffect(() => {
-		localStorage.setItem('elements', JSON.stringify(elements))
+		localStorage.setItem('elements', JSON.stringify(elements));
+
 	}, [elements])
+	useEffect()
 
 	function createElement() {
 
@@ -28,6 +30,7 @@ export default function Main() {
 		setActiveElId(e.target.id);
 	}
 	function changeElement(e) {
+
 
 		setElements(prev => prev.map(oldNote => {
 			return oldNote.id === activeElId ? { ...oldNote, text: e.target.value } : oldNote;
